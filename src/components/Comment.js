@@ -1,10 +1,10 @@
-const Comment = () => {
-    return ( 
-        <div className="comment">
-            <p>name</p>
-            <p>email</p>
-        </div>
-     );
-}
- 
+const Comment = ({ name, email }) => {
+  return (
+    <div className="comment">
+      <h4>name: {name}</h4>
+      <p>email: {email}</p>
+    </div>
+  );
+};
+
 export default Comment;

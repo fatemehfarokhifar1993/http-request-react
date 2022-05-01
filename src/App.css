@@ -4,7 +4,7 @@
   height: 100%;
   max-width: 1170px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 .comments{
   display: flex;
@@ -14,8 +14,8 @@
   flex-wrap: wrap;
 }
 .comment{
+  height: 100px;
   width: 250px;
-  min-height: 100px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -26,8 +26,7 @@
   border-radius: 10px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
   transition: all 0.2s;
-  background: radial-gradient(#60efbc, #58d5c9);
-  background:#D19FA0 ;
+  background: #b7b7a4;
 }
 .comment:hover {
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
@@ -36,59 +35,78 @@
 .fullComment{
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
   display: flex;
-  align-items: center;
+  align-items:flex-start;
   flex-direction: row;
   justify-content: space-between;
-  background: #ccc;
+  background: #fff;
   width: 700px;
-  height: 250px;
-  color: #444;
+  height: 200px;
   border-radius: 5px;
   margin: 20px 0;
   border-radius: 10px;
   overflow: hidden;
 }
 .fullComment div{
-  color: #fff;
   padding: 1rem;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  background-color: #3D3E25;
+  background-color: #cb997e;
   height: 100%;
   width: 35%;
 }
-.fullComment p{
+.fullComment .fullComment-context{
   padding: 1rem;
   height: 100%;
-  background-color: #fff;
   width: 65%;
   text-align: justify;
   overflow-y:auto;
 }
+.fullComment button{
+  cursor: pointer;
+  color: red;
+  background:none ;
+  border: none;
+  font-size: 1.5rem;
+  margin: 0.5rem;
+}
 .newComment{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content:flex-start;
-  background: #897172;
   width:700px;
-  height: 300px;
-  color: #444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:space-between;
   border-radius: 10px;
+  margin: 1rem;
+  padding:0.5rem 1rem;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  background:#a5a58d ;
+}
+.newComment h4{
+  text-transform: capitalize;
 }
 .newComment input,.newComment textarea{
   font-size:1rem;
-  width: 90%;
+  width: 95%;
   padding: 0.7rem 1rem;
   outline: none;
   border: none;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   border-radius: 5px;
 }
-.newComment textarea{
-  min-height: 40%;
+.newComment button{
+  outline: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  background:#6b705c ;
+  font-size: 18px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.newComment button:hover{
+  background: radial-gradient(#b7b7a4, #6b705c);
 }
 section{
   display: flex;
