@@ -42,7 +42,7 @@ const Discussion = () => {
         <FullComment commentId={selectedId} />
       </section>
       <section>
-        <NewComment />
+        <NewComment setComments={setComments} />
       </section>
     </main>
   );
