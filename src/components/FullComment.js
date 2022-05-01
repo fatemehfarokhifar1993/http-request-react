@@ -1,17 +1,48 @@
+import axios from "axios";
 import { BiTrash } from "react-icons/bi";
-const FullComment = () => {
-  return (
-    <div className="fullComment">
-      <div>
-        <h3>name</h3>
-        <h4>email</h4>
-      </div>
-      <p className="fullComment-context"></p>
-      <button>
-        <BiTrash />
-      </button>
-    </div>
+import React, { useEffect, useState } from "react";
+
+const FullComment = ({ commentId }) => {
+  const [comment, setComment] = useState(null);
+  useEffect(() => {
+    if (commentId) {
+      axios
+        .get(`http://localhost:3001/comments/${commentId}`)
+        .then((response) => {
+          setComment(response.data);
+        })
+        .catch();
+    }
+  }, [commentId]);
+  let commentDetail = (
+    <p
+      style={{
+        background: "#ddbea9",
+        padding: "1rem",
+        borderRadius: "5px",
+        margin: "1rem",
+      }}
+    >
+      please select a comment !
+    </p>
   );
+
+  if (commentId) commentDetail = <p>loading ...</p>;
+  if (comment) {
+    commentDetail = (
+      <div className="fullComment">
+        <div>
+          <h3>{comment.name}</h3>
+          <h4>{comment.email} </h4>
+        </div>
+        <p className="fullComment-context">{comment.body}</p>
+        <button>
+          <BiTrash />
+        </button>
+      </div>
+    );
+  }
+  return commentDetail;
 };
 
 export default FullComment;
