@@ -2,7 +2,7 @@ import axios from "axios";
 import { BiTrash } from "react-icons/bi";
 import React, { useEffect, useState } from "react";
 
-const FullComment = ({ commentId }) => {
+const FullComment = ({ commentId, setComments, setSelectedId }) => {
   const [comment, setComment] = useState(null);
   useEffect(() => {
     if (commentId) {
@@ -14,6 +14,15 @@ const FullComment = ({ commentId }) => {
         .catch();
     }
   }, [commentId]);
+  const deleteHandler = async () => {
+    try {
+      await axios.delete(`http://localhost:3001/comments/${commentId}`);
+      const response = await axios.get("http://localhost:3001/comments");
+      setComments(response.data);
+      setSelectedId(null);
+      setComment(null);
+    } catch (error) {}
+  };
   let commentDetail = (
     <p
       style={{
@@ -36,7 +45,7 @@ const FullComment = ({ commentId }) => {
           <h4>{comment.email} </h4>
         </div>
         <p className="fullComment-context">{comment.body}</p>
-        <button>
+        <button onClick={deleteHandler}>
           <BiTrash />
         </button>
       </div>

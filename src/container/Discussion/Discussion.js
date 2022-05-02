@@ -6,7 +6,7 @@ import NewComment from "../../components/NewComment";
 const Discussion = () => {
   const [comments, setComments] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
-  const [error,setError]=useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const getComments = async () => {
@@ -14,7 +14,7 @@ const Discussion = () => {
         const response = await axios.get("http://localhost:3001/comments");
         setComments(response.data);
       } catch (error) {
-        setError(true)
+        setError(true);
       }
     };
 
@@ -25,7 +25,7 @@ const Discussion = () => {
   };
   const renderComments = () => {
     let renderValue = <p>loading ...</p>;
-    if(error) renderValue=<p>fetching data failed !</p>
+    if (error) renderValue = <p>fetching data failed !</p>;
     if (comments && !error) {
       renderValue = comments.map((c) => (
         <Comment
@@ -42,7 +42,11 @@ const Discussion = () => {
     <main>
       <section className="comments">{renderComments()}</section>
       <section>
-        <FullComment commentId={selectedId} />
+        <FullComment
+          commentId={selectedId}
+          setComments={setComments}
+          setSelectedId={setSelectedId}
+        />
       </section>
       <section>
         <NewComment setComments={setComments} />
